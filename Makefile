@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = main.c shapes.c colors.c
+SRCS = so_long.c map.c
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
