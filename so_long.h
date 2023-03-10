@@ -30,8 +30,12 @@ int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
 
-int	keystroke(int keycode, t_vars *vars);
+int		keystroke(int keycode, t_vars *vars);
 
-int	load_map(t_data *map, t_vars *vars, char *map_file);
+void	print_map(char **map);
+int		is_square();
+
+int		load_map(t_data *map, t_vars *vars, char *map_file);
+char	*pick_xpm_file(int tile_size, int tile_type);
 
 #endif
