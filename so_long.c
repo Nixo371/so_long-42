@@ -6,7 +6,7 @@
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 23:14:19 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/03/10 01:18:43 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/03/10 02:49:02 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ int	main(int argc, char **argv)
 	if (!argv)
 		return (1);
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1024, 1024, "Gamer Moment");
-
-	map_background.img = mlx_new_image(vars.mlx, 1024, 1024);
-	map_background.addr = mlx_get_data_addr(map_background.img, &map_background.bits_per_pixel, &map_background.line_length, &map_background.endian);
 	
 	error = load_map(&map_background, &vars, "map.bar");
 	if (error == 0)

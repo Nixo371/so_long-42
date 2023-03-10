@@ -33,7 +33,8 @@ int		get_b(int trgb);
 int		keystroke(int keycode, t_vars *vars);
 
 void	print_map(char **map);
-int		is_square();
+int		is_square(char *file_name, int sel);
+int		get_type(char tile_type);
 
 int		load_map(t_data *map, t_vars *vars, char *map_file);
 char	*pick_xpm_file(int tile_size, int tile_type);
