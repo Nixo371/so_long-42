@@ -20,6 +20,7 @@ typedef struct	s_data {
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+	int		moves;
 	t_data	*map;
 }	t_vars;
 
@@ -39,11 +40,14 @@ int		is_square(char *file_name, int sel);
 int		get_type(char tile_type);
 int		get_tile_type(char **map, int x, int y);
 
+int		all_collectibles(char **map);
+
 char	**map_init(char *file, int length, int height);
 int		load_map(t_vars *vars, char *map_file);
 int		render_map(t_vars *vars, int map_length, int map_height);
 int		update_map(t_vars *vars, int code);
 void	find_player(char **map, int *x, int *y);
+
 char	*pick_xpm_file(int tile_size, int tile_type);
 
 #endif

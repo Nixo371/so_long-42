@@ -6,7 +6,7 @@
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 23:27:42 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/03/10 07:00:08 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/03/10 07:30:23 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	print_map(char **map)
 char	*pick_xpm_file(int tile_size, int tile_type)
 {
 	char	*xpm_file = malloc(22 * sizeof(char));
-	
+
 	if (tile_type == 0)
 	{
 		if (tile_size == 32)
@@ -284,15 +284,26 @@ int	update_map(t_vars *vars, int code)
 	find_player(vars->map->map, &x, &y);
 	if (get_tile_type(vars->map->map, x + x_o, y + y_o) != 1)
 	{
+		if (get_tile_type(vars->map->map, x + x_o, y + y_o) == 3)
+		{
+			if (all_collectibles(vars->map->map))
+			{
+				printf("Movimientos Reales: %d\n", ++vars->moves);
+				printf("you win\n");
+				close_win(vars);
+			}
+			return (1);
+		}
 		vars->map->map[y][x] = '0';
 		vars->map->map[y + y_o][x + x_o] = 'P';
 		x = 0;
 		y = 0;
 		while (vars->map->map[y++]);
 		while (vars->map->map[0][x++]);
+		render_map(vars, --x, --y);
+		printf("Movimientos Reales: %d\n", ++vars->moves);
+		//print_map(vars->map->map);
 	}
-	render_map(vars, --x, --y);
-	print_map(vars->map->map);
 	return (1);
 }
 
@@ -314,4 +325,25 @@ void	find_player(char **map, int *x, int *y)
 int	get_tile_type(char **map, int x, int y)
 {
 	return (get_type(map[y][x]));
+}
+
+int	all_collectibles(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		while(map[i][j])
+		{
+			if (map[i][j] == 'C')
+				return (0);
+			j += 1;
+		}
+		j = 0;
+		i += 1;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 23:14:19 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/03/10 05:01:51 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/03/10 07:28:48 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 
 	vars.mlx = mlx_init();
 	vars.map = &map;
+	vars.moves = 0;
 	
 	error = load_map(&vars, argv[1]);
 	if (error == 0)
