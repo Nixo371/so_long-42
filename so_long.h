@@ -42,6 +42,11 @@ int		get_tile_type(char **map, int x, int y);
 
 int		all_collectibles(char **map);
 
+int		get_length(char **map);
+int		get_height(char **map);
+int		get_x(char **map, char tile);
+int		get_y(char **map, char tile);
+
 char	**map_init(char *file, int length, int height);
 int		load_map(t_vars *vars, char *map_file);
 int		render_map(t_vars *vars, int map_length, int map_height);

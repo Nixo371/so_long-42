@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = so_long.c map.c
+SRCS = so_long.c map.c errors.c
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
